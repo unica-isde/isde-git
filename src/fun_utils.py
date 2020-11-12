@@ -37,4 +37,13 @@ def split_data(x, y, tr_fraction=0.5):
     idx = np.array(range(0, num_samples))
     np.random.shuffle(idx)  # shuffle the elements of idx
 
-    pass
+    tr_idx = idx[0:n_tr]
+    ts_idx = idx[n_tr:]
+
+    Xtr = X[tr_idx, :]
+    ytr = y[tr_idx]
+
+    Xts = X[ts_idx, :]
+    yts = y[ts_idx]
+
+    return Xtr, ytr, Xts, yts
