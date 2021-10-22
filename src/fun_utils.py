@@ -2,12 +2,14 @@ from pandas import read_csv
 import numpy as np
 
 
-def load_data(filename):
+def load_data(filename, n_samples=None):
     """
     Load data from a csv file
 
     Parameters
     ----------
+    n_samples : integer
+        number of samples.
     filename : string
         Filename to be loaded.
 
@@ -21,6 +23,8 @@ def load_data(filename):
     """
     data = read_csv(filename)
     z = np.array(data)
+    if n_samples is not None:
+        z = z[:n_samples, :]
     y = z[:, 0]
     X = z[:, 1:]
     return X, y
