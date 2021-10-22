@@ -38,5 +38,6 @@ class NMC(object):
         pass
 
     def predict(self, xts):
+        #Predict implementation
         pass
 #nahom add this comment
