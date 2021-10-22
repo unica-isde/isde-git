@@ -25,6 +25,10 @@ def load_data(filename):
     X = z[:, 1:]
     return X, y
 
+def load_mnist():
+    X, y = load_data("../data/mnist_data.csv")
+
+    return X, y
 
 def split_data(x, y, tr_fraction=0.5):
     """
