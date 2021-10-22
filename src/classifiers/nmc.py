@@ -19,7 +19,7 @@ class NMC(object):
     -----------------
     - fit(x,y) estimates centroids from the training data
     - predict(x) predicts the class labels on testing points
-
+    Modified version of Split data
     """
 
     def __init__(self):
@@ -29,7 +29,7 @@ class NMC(object):
     @property
     def centroids(self):
         return self._centroids
-
+# Split data
     @property
     def class_labels(self):
         return self._class_labels
