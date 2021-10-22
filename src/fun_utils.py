@@ -31,4 +31,18 @@ def split_data(x, y, tr_fraction=0.5):
     Split the data x, y into two random subsets
 
     """
-    pass
+    x_samples = x.shape[0]
+    tr_samples = round(x_samples * tr_fraction)
+    x_idx = np.array(range(0, x_samples))
+    np.random.shuffle(x_idx)
+
+    tr_idx = x_idx[0:tr_samples]
+    ts_idx = x_idx[tr_samples:]
+
+    xtr = x[tr_idx, :]
+    ytr = y[tr_idx]
+
+    xts = x[ts_idx, :]
+    yts = y[ts_idx]
+
+    return xtr, ytr, xts, yts
