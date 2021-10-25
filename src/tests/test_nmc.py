@@ -2,7 +2,7 @@ import numpy as np
 from os import path
 import unittest
 
-from fun_utils import load_data, split_data
+from fun_utils import load_mnist, split_data
 from classifiers import NMC
 
 
@@ -12,7 +12,7 @@ class TestNMC(unittest.TestCase):
         # Loading MNIST dataset
         mnist_path = path.join(
             path.dirname(__file__), '..', '../data', 'mnist_data.csv')
-        x, y = load_data(filename=mnist_path)
+        x, y = load_mnist(filename=mnist_path)
         # Rescale data in 0-1
         self.x = x / 255
         self.y = y
