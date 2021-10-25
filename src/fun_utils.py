@@ -2,7 +2,7 @@ from pandas import read_csv
 import numpy as np
 
 
-def load_mnist(csv_filename):
+def load_data(filename):
     """
     Load the MNIST dataset from .csv file
 
@@ -19,7 +19,7 @@ def load_mnist(csv_filename):
     y : ndarray
         the labels of each sample.
     """
-    data = read_csv(csv_filename)
+    data = read_csv(filename)
     z = np.array(data)
     y = z[:, 0]
     X = z[:, 1:]
