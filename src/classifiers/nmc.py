@@ -35,7 +35,18 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        pass
+        num_classes = np.unique(ytr).size
+        # the number of colums of x
+        num_features = xtr.shape[1]
+        self._centroids = np.zeros(shape=(num_classes, num_features))
 
+        for k in range(num_classes):
+            xk = xtr[ytr == k, :]
+            self._centroids[k, :] = np.mean(xk, axis=0)
+        return self
     def predict(self, xts):
-        pass
+        if self._centroids is None:
+            raise ValueError("train classifier ")
+        dist = euclidean_distances(xts, self.centroids)
+        y_pred = np.argmin(dist, axis=1)
+        return y_pred
