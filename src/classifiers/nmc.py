@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics.pairwise import euclidean_distances, pairwise_distances
 
 
 class NMC(object):
@@ -35,7 +35,28 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        pass
+        """
+                Parameters
+                ----------
+                xtr : training dataset
+                ytr : training labels
+                Returns
+                -------
+                clf : trained model
+                """
+        num_classes = np.unique(ytr).size
+        num_features = xtr.shape[1]
+        self._centroids = np.zeros(shape=(num_classes, num_features))
+        for k in range(num_classes):
+            xk = xtr[ytr == k, :]
+            self._centroids[k, :] = np.mean(xk, axis=0)
+        return self
 
     def predict(self, xts):
-        pass
+        if self._centroids is None:  # the classifier is not trained
+            raise ValueError("Train classifier first!")
+
+        dist = pairwise_distances(xts, self._centroids)
+        y_pred = np.argmin(dist, axis=1)
+        return y_pred
+
