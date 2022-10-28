@@ -2,8 +2,8 @@ import numpy as np
 from os import path
 import unittest
 
-from ..fun_utils import load_data, split_data
-from ..classifiers import NMC
+from fun_utils import load_data, split_data
+from classifiers import NMC
 
 
 class TestNMC(unittest.TestCase):
