@@ -31,4 +31,22 @@ def split_data(x, y, tr_fraction=0.5):
     Split the data x, y into two random subsets
 
     """
+
+    "Split the data sizes into two, and randomly choosing values for both the test and training subsets"
+    n_sample = x.size(0)
+    n_tr = int(n_sample * tr_fraction)
+
+    ind = np.linespace(1, n_sample, num=n_sample, endpoint=False, dtype='int')
+    np.random.shuffle(ind)
+
+    "Extraction of the two subsets' indexes, tr_ind = training, ts_ind = testing indices"
+    tr_ind = ind[:n_tr]
+    ts_ind = ind[n_tr:]
+
+    xtr = x[tr_ind:, :]
+    xts = x[ts_ind, :]
+    ytr = x[tr_ind]
+    yts = x[ts_ind]
+
+    return xtr, ytr, xts, yts
     pass
