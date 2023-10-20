@@ -41,5 +41,4 @@ def split_data(x, y, tr_fraction=0.5):
     ytr = y[idx_tr]
     xts = x[idx_ts, :]
     yts = y[idx_ts]
-
     return xtr, ytr, xts, yts
