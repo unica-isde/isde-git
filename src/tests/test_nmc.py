@@ -2,8 +2,8 @@ import numpy as np
 from os import path
 import unittest
 
-from fun_utils import load_data, split_data
-from classifiers import NMC
+from src.fun_utils import load_data, split_data
+from src.classifiers import NMC
 
 
 class TestNMC(unittest.TestCase):
@@ -17,6 +17,12 @@ class TestNMC(unittest.TestCase):
         self.x = x / 255
         self.y = y
         self.clf = NMC()
+
+    def test_load_data(self):
+        assert self.x is not None
+        assert self.y is not None
+        assert type(self.x) == np.ndarray
+        assert type(self.y) == np.ndarray
 
     def test_split_data(self):
         xtr, ytr, xts, yts = split_data(self.x, self.y, tr_fraction=0.5)
