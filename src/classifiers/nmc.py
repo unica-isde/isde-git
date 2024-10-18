@@ -35,7 +35,15 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
+        labels = np.unique(ytr)
+        centroids = np.zeros(shape=(labels.size, xtr.shape[1]))
+
+        for i, label in enumerate(labels):
+            centroids[i, :] = xtr[ytr == label, :].mean(axis=0)
+
+        return centroids, labels
         pass
 
     def predict(self, xts):
         pass
+
