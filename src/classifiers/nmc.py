@@ -59,3 +59,5 @@ class NMC(object):
         print(f"Accuratezza: {accuracy:.2f}%")
         
         return predictions, accuracy
+    
+        #aggiungo un commento
