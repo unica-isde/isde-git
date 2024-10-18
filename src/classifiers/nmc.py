@@ -37,9 +37,6 @@ class NMC(object):
     def fit(self, xtr, ytr):
         pass
 
-    def predict(self, xts):
-        pass
-
     def predict(self,xts):
         # Calcola la distanza euclidea tra ciascuna immagine di test e tutti i centroidi
         # usando pairwise_distances di sklearn
