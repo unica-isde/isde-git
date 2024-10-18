@@ -35,7 +35,26 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        pass
+        """
+        Compute the average centroids for each class
+
+        Parameters
+        ----------
+        xtr: training data
+        ytr: training labels
+
+        Returns
+        -------
+        self: trained NMC classifier
+        """
+
+        n_dimensions = xtr.shape[1]
+        n_classes = np.unique(ytr).size
+        self._centroids = np.zeros(shape=(n_classes, n_dimensions))
+        for k in range(n_classes):
+            # extract images from one class and then average along dim 0
+            self._centroids[k, :] = np.mean(xtr[ytr == k, :], axis=0)
+        return self
 
     def predict(self, xts):
         pass
