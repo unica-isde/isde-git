@@ -59,7 +59,7 @@ class NMC(object):
         return self
 
     def predict(self, xts):
-                """
+        """
         Brand new docstring
 
         Parameters
