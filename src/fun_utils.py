@@ -1,4 +1,3 @@
-from pandas import read_csv
 import numpy as np
 
 
@@ -20,4 +19,6 @@ def split_data(x, y, tr_frac=0.6):
     ytr = y[tr_idx]
     xts = x[ts_idx, :]
     yts = y[ts_idx]
-    return xtr, ytr, xts, yts,
+    return xtr, ytr, xts, yts
+
+  
