@@ -1,6 +1,8 @@
 import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
 
+import pandas as pd
+
 
 class NMC(object):
     """
@@ -39,3 +41,14 @@ class NMC(object):
 
     def predict(self, xts):
         pass
+
+    
+
+    def load_mnist(self):
+        data = pd.read_csv("data/mnist_data.csv")
+        data = np.array(data)
+        
+        y = data[:, 0]
+        x = data[:, 1:] / 255
+
+        return x,y
