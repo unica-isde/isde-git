@@ -59,14 +59,27 @@ class NMC(object):
         return self
 
     def predict(self, xts):
-        pass
+        """
+        Brand new docstring
 
-    
+        Parameters
+        ----------
+        xts
+
+        Returns
+        -------
+
+        """
+        scores = self.decision_function(xts)
+        ypred = np.argmax(scores, axis=1)
+        return ypred
+
+
 
     def load_mnist(self):
         data = pd.read_csv("data/mnist_data.csv")
         data = np.array(data)
-        
+
         y = data[:, 0]
         x = data[:, 1:] / 255
 
