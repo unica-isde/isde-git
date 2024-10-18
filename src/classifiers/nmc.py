@@ -38,4 +38,17 @@ class NMC(object):
         pass
 
     def predict(self, xts):
-        pass
+                """
+        Brand new docstring
+
+        Parameters
+        ----------
+        xts
+
+        Returns
+        -------
+
+        """
+        scores = self.decision_function(xts)
+        ypred = np.argmax(scores, axis=1)
+        return ypred
