@@ -39,3 +39,19 @@ class NMC(object):
 
     def predict(self, xts):
         pass
+
+    def predict(self,xts):
+        # Calcola la distanza euclidea tra ciascuna immagine di test e tutti i centroidi
+        # usando pairwise_distances di sklearn
+        # Seleziona metric='euclidean' per calcolare la distanza euclidea
+        distances = euclidean_distances(xts, self.centroids)
+        
+        # Per ciascuna immagine di test, si seleziona la classe con la distanza minore
+        predictions = np.argmin(distances, axis=1)
+        
+        # Calcola l'accuratezza del modello
+        accuracy = np.mean(predictions == self._class_labels) * 100
+        
+        print(f"Accuratezza: {accuracy:.2f}%")
+        
+        return predictions, accuracy
