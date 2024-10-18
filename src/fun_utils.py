@@ -22,8 +22,8 @@ def load_data(filename):
     data = read_csv(filename)
     z = np.array(data)
     y = z[:, 0]
-    X = z[:, 1:]
-    return X, y
+    x = z[:, 1:]
+    return x, y
 
 
 def split_data(x, y, tr_fraction=0.5):
