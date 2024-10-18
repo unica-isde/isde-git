@@ -19,6 +19,7 @@ class NMC(object):
     -----------------
     - fit(x,y) estimates centroids from the training data
     - predict(x) predicts the class labels on testing points
+    - example
 
     """
 
