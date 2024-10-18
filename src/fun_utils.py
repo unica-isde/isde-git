@@ -25,10 +25,3 @@ def load_data(filename):
     x = z[:, 1:]
     return x, y
 
-
-def split_data(x, y, tr_fraction=0.5):
-    """
-    Split the data x, y into two random subsets
-
-    """
-    pass
