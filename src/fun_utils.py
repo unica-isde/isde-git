@@ -2,7 +2,7 @@ from pandas import read_csv
 import numpy as np
 
 
-def load_data(filename):
+def load_mnist(filename):
     """
     Load data from a csv file
 
@@ -31,4 +31,16 @@ def split_data(x, y, tr_fraction=0.5):
     Split the data x, y into two random subsets
 
     """
-    pass
+
+    num_samples = y.size
+    n_tr = int(num_samples * tr_fraction)
+    idx = np.array(range(0, num_samples))
+    np.random.shuffle(idx)  # shuffle indices
+    tr_idx = idx[0:n_tr]
+    ts_idx = idx[n_tr:]
+    Xtr = x[tr_idx, :]
+    ytr = y[tr_idx]
+    Xts = x[ts_idx, :]
+    yts = y[ts_idx]
+    return Xtr,ytr,Xts,yts
+
