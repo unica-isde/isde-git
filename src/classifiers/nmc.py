@@ -22,6 +22,7 @@ class NMC(object):
 
     """
 
+
     def __init__(self):
         self._centroids = None
         self._class_labels = None  # class labels may not be contiguous indices
@@ -35,7 +36,20 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        pass
+        classes = np.unique(ytr)
+        num_classes = classes.size
+        centroids = np.zeros(
+            shape=(num_classes, xtr.shape[1]))
+        for k in range(num_classes):
+            xk = xtr[ytr == classes[k], :]
+        centroids[k, :] = np.mean(xk, axis=0)
+        return centroids
 
-    def predict(self, xts):
-        pass
+    def predict(self, xts, centroids, classes = None):
+
+        dist_euclidean = euclidean_distances(xts, centroids)
+        ypred = np.argmin(dist_euclidean, axis=1)
+        if classes is not None:
+            ypred = classes[ypred]
+
+        return ypred
