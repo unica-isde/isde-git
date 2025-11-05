@@ -44,6 +44,13 @@ class NMC(object):
             x: set of images (training set, numpy array)
             y: labels (training set, numpy array)
         """
+        labels = np.unique(ytr)
+        self._centroids = np.zeros(shape=(labels.size, xtr.shape[1]))
+
+        for i, label in enumerate(labels):
+            self._centroids[i, :] = xtr[ytr == label, :].mean(axis=0)
+
+        return self
 
     def predict(self, xts):
         pass
