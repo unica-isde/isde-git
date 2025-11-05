@@ -38,4 +38,9 @@ class NMC(object):
         pass
 
     def predict(self, xts):
-        pass
+        if self._centroids is None:
+            raise Exception("Model not trained yet.")
+        nts = xts.shape[0]
+        dist = euclidean_distances(xts, self._centroids)
+        ypred = np.argmin(dist, axis=1)
+        return ypred
