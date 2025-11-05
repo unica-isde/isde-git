@@ -32,3 +32,22 @@ def split_data(x, y, tr_fraction=0.5):
 
     """
     pass
+
+def load_mnist(csv_filename: str):
+    """
+    Load the MNIST dataset from a csv file
+
+    Parameters
+    ----------
+    csv_filename : string
+        Filename to be loaded.
+
+    Returns
+    -------
+    X : ndarray
+        the data matrix.
+
+    y : ndarray
+        the labels of each sample.
+    """
+    return load_data(csv_filename)
