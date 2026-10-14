@@ -2,7 +2,7 @@ import numpy as np
 from os import path
 import unittest
 
-from fun_utils import load_data, split_data
+from fun_utils import load_data, split_data,load_mnist
 from classifiers import NMC
 
 
@@ -53,3 +53,18 @@ class TestNMC(unittest.TestCase):
         yc = self.clf.predict(self.x)
         assert yc.ndim == 1
         assert yc.shape[0] == self.x.shape[0]
+
+    def test_load_mnist(self):
+        mnist_path = path.join(
+            path.dirname(__file__), '..', '../data', 'mnist_data.csv')
+
+        x, y = load_mnist(mnist_path)
+
+        assert type(x) == np.ndarray
+        assert type(y) == np.ndarray
+
+        assert x.ndim == 2
+        assert y.ndim == 1
+
+        # Verifica che il numero di etichette corrisponda al numero di immagini
+        assert x.shape[0] == y.shape[0]
