@@ -35,8 +35,16 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        self._class_labels = np.unique(ytr)
-        self._centroids = np.array([np.mean(xtr[ytr == c], axis=0) for c in self._class_labels])
+        pass
 
     def predict(self, xts):
-        pass
+            """Predict the class of each input.
+            input:
+                x: set of images (test set, numpy array)
+            output:
+                y: labels (numpy array)
+            """
+            dist = euclidean_distances(xts, self._centroids)
+            y = self._class_labels[np.argmin(dist, axis=1)]
+
+            return y
