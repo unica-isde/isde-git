@@ -33,16 +33,5 @@ def split_data(x, y, tr_fraction=0.5):
     """
     pass
 
-def fit(x_train, y_train):
-    """
-    Fit a model to the training data
 
-    """
-    num_classes = np.unique(y_train).size
-    num_features = x_train.shape[1]
-
-    centroids = np.zeros(shape=(num_classes,num_features))
-    for i in range(num_classes):
-        centroids[i] = np.mean(x_train[y_train == i], axis=0)
-        return centroids
     
